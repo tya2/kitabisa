@@ -3,7 +3,7 @@
  * console.log('timestamp: ', timestamp);
 */
 
-function calculateX(statement = '') {
+export function calculateX(statement = '') {
   let X = 0;
   let firstOperator = 0;
   const newStatement = [];
@@ -69,4 +69,4 @@ function calculateX(statement = '') {
   return X;
 }
 
-calculateX('343 + 36435 - 34245 + 5867');
+export function noop() {}
