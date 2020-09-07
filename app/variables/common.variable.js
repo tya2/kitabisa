@@ -1,6 +1,6 @@
 export const GET_LIMIT = 10;
 
-export const API_PATH = '/api/v2';
+export const API_PATH = '/api/v1';
 
 export const protocol = {
   HTTP: 'http://',

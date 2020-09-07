@@ -21,7 +21,7 @@
  - We are using `middleware` to manage request payload validation and `controller` to manage logic process on API.
  - For utilisation function like transform value, http function, etc, we placed it into `utils` folder.
  - We placed all the query function into `queries` folder and DB models into `models` folder.
- - We using .env config file that will be placed into root project to manage the config. Then the .env config file will be structured by env.config.js file on `configs` folder. A config folder used to manage all configuration needed for the engine.
+ - We using .env config file that will be placed into root project to manage the config. Then the .env config file will be structured by `env.config.js` file on `configs` folder. A config folder used to manage all configuration needed for the engine.
  - We placed all the possibility reused function into `functions` folder.
  - We placed all the static variable into `variables` folder.
  - If we using socket into API, we manage all socket namespace into `sockets` folder.
@@ -169,3 +169,21 @@ PROD_INT_REDIS_PORT=
 - All the payload function for save or update query should be placed into `payload.util.js` file.
 - All the validation function for validate something should be placed into `validation.util.js` file.
 - All the validation function for transform value should be placed into `transformer.util.js` file.
+- Format response for API should have 3 property: `status`, `data`, `message`.
+  for successfully example response:
+  ```
+  {
+    "data": 8400,
+    "status": "OK",
+    "message": "Solve problem one successfully"
+  }
+  ```
+  for failed response:
+  ```
+  {
+    "data": null,
+    "status": "ERROR",
+    "message": "Player already exist"
+  }
+  ```
+ - For the logic structure in controller, you should define validation for the payload first before executing manipulation process.

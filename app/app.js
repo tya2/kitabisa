@@ -11,6 +11,7 @@ import cors from 'cors';
 import indexRouter from './routes';
 import config from './configs/env.config';
 import { accessLogStream } from './utils/devices.util';
+import { API_PATH } from './variables/common.variable';
 
 const app = express();
 const env = process.env.NODE_ENV;
@@ -32,7 +33,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'assets')));
 
-app.use('/api/v2', indexRouter);
+app.use(API_PATH, indexRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => next(createError(404)));
