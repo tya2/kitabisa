@@ -1,3 +1,4 @@
+import uuidv4 from 'uuid/v4';
 import moment from 'moment';
 import { snakeCase, isEmpty } from 'lodash';
 import { images, colors } from '../variables/common.variable';
@@ -18,7 +19,7 @@ export function slackFormat(payload = {}) {
     username: 'Slack Bugs Notification',
     attachments: [{
       color: colors[payload.error.priority],
-      pretext: `Mysiloam 2.0 Template:\n${payload.method} <${payload.url}>`,
+      pretext: `Kitabisa 1.0 BE:\n${payload.method} <${payload.url}>`,
       fields: [{
         title: 'Priority',
         value: `\`\`\`${payload.error.priority.toUpperCase()}\`\`\``,
@@ -41,8 +42,8 @@ export function slackFormat(payload = {}) {
         short: false,
       }],
       thumb_url: 'https://platform.slack-edge.com/img/default_application_icon.png',
-      footer: 'Atria Dika Puspita',
-      footer_icon: 'https://avatars3.githubusercontent.com/u/20973157?s=400&u=532e9e0335d920cfc0c1d823f3c771a87744873d&v=4',
+      footer: 'Anonim',
+      footer_icon: 'https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80',
       ts: moment().unix(),
     }],
   };
@@ -56,4 +57,21 @@ export function updateFormat(payload = {}) {
       return data;
     });
   return data;
+}
+
+export function addPlayerFormat(payload = {}) {
+  return {
+    player_id: uuidv4(),
+    name: payload.name,
+    team_id: payload.teamId,
+    is_active: true,
+  };
+}
+
+export function addTeamFormat(payload = {}) {
+  return {
+    team_id: uuidv4(),
+    name: payload.name,
+    is_active: true,
+  };
 }
